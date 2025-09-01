@@ -1,0 +1,25 @@
+{
+  "name": "ci-cd-yaml-generator",
+  "version": "1.0.0",
+  "main": "generate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubhranshu007/ci-cd-yaml-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shubhranshu007/ci-cd-yaml-generator/issues"
+  },
+  "homepage": "https://github.com/shubhranshu007/ci-cd-yaml-generator#readme",
+  "description": "",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "fs-extra": "^11.3.1",
+    "handlebars": "^4.7.8"
+  }
+}

@@ -1,0 +1,46 @@
+ name: CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+{{#if (eq language "node")}}
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+{{/if}}
+
+{{#if (eq language "python")}}
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+{{/if}}
+
+{{#if (eq language "go")}}
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.20'
+{{/if}}
+
+{{#if (eq language "java")}}
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+{{/if}}
+
+      - name: Run Build
+        run: |
+{{#each build.commands}}
+          {{this}}
+{{/each}}

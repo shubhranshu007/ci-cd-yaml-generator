@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "required": ["language", "ciPlatform", "build"],
+    "properties": {
+      "language": {
+        "type": "string",
+        "enum": ["node", "python", "go", "java"]
+      },
+      "ciPlatform": {
+        "type": "string",
+        "enum": ["github"]
+      },
+      "build": {
+        "type": "object",
+        "required": ["commands"],
+        "properties": {
+          "commands": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
