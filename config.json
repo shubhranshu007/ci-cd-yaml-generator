@@ -1,7 +1,15 @@
 {
-    "language": "python",
-    "ciPlatform": "github",
-    "build": {
-      "commands": ["pip install -r requirements.txt", "pytest"]
-    }
+  "language": "python",
+  "ciPlatform": "github",
+  "build": {
+    "commands": ["pip install -r requirements.txt", "pytest"]
+  },
+  "deploy": {
+    "platform": "aws-eb",
+    "commands": [
+      "pip install awsebcli",
+      "eb init myapp --platform python-3.11 --region us-east-1",
+      "eb deploy"
+    ]
   }
+}

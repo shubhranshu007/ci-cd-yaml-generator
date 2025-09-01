@@ -1,4 +1,4 @@
- name: CI
+name: CI/CD
 
 on:
   push:
@@ -22,3 +22,14 @@ jobs:
         run: |
           pip install -r requirements.txt
           pytest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to aws-eb
+        run: |
+          pip install awsebcli
+          eb init myapp --platform python-3.11 --region us-east-1
+          eb deploy

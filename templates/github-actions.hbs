@@ -1,4 +1,4 @@
- name: CI
+name: CI/CD
 
 on:
   push:
@@ -44,3 +44,16 @@ jobs:
 {{#each build.commands}}
           {{this}}
 {{/each}}
+
+{{#if deploy}}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to {{deploy.platform}}
+        run: |
+{{#each deploy.commands}}
+          {{this}}
+{{/each}}
+{{/if}}
